@@ -5,7 +5,7 @@ const Incidents = () => {
   return (
     <View>
       <Text>Incidentes durante el partido</Text>
-      <Button title="Pdf" onPress={() => navigation.navigate("Pdf")} />
+      <Button title="Generar Pdf" onPress={() => navigation.navigate("Pdf")} />
     </View>
   );
 };

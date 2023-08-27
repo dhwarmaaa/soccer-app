@@ -8,6 +8,8 @@ import {
   Platform,
 } from "react-native";
 import { useState, useContext } from "react";
+import MainCard from "../components/UI/MainCard";
+import PageLayout from "../components/UI/PageLayout";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import TitularPlayers from "../components/TitularPlayers";
 import { useNavigation } from "@react-navigation/native";
@@ -52,111 +54,119 @@ const Home = () => {
     }
   };
   return (
-    <ScrollView style={{ backgroundColor: "#fff", padding: 20 }}>
-      <Text style={{ fontSize: 20, fontWeight: "bold", fontFamily: "" }}>
-        Información general
-      </Text>
-      <TextInput
-        placeholder="Nombre de la liga"
-        style={styles.input2}
-        onChangeText={(text) =>
-          setInput((prevInput) => ({ ...prevInput, liga: text }))
-        }
-        value={input.liga}
-      />
+    <ScrollView
+      style={{
+        flex: 1,
+        padding: 20,
+        backgroundColor: "#ff5232",
+      }}
+    >
+      <PageLayout>
+        <Text style={{ fontSize: 20, fontWeight: "bold", margin: 10 }}>
+          Información general
+        </Text>
+        <TextInput
+          placeholder="Nombre de la liga"
+          style={styles.input2}
+          onChangeText={(text) =>
+            setInput((prevInput) => ({ ...prevInput, liga: text }))
+          }
+          value={input.liga}
+        />
 
-      <TextInput
-        placeholder="Torneo"
-        style={styles.input2}
-        onChangeText={(text) =>
-          setInput((prevInput) => ({ ...prevInput, torneo: text }))
-        }
-        value={input.torneo}
-      />
-      <TextInput
-        placeholder="Ciudad"
-        style={styles.input2}
-        onChangeText={(text) =>
-          setInput((prevInput) => ({ ...prevInput, ciudad: text }))
-        }
-        value={input.ciudad}
-      />
-      <Pressable onPress={toggleDatepicker}>
-        {showPicker && (
-          <DateTimePicker
-            testID="dateTimePicker"
-            value={input.horaInicio}
-            mode="date"
-            onChange={onChange}
-          />
-        )}
         <TextInput
-          placeholder="Fecha"
+          placeholder="Torneo"
           style={styles.input2}
-          onChangeText={setTextDate}
-          value={textDate}
-          editable={false}
+          onChangeText={(text) =>
+            setInput((prevInput) => ({ ...prevInput, torneo: text }))
+          }
+          value={input.torneo}
         />
-      </Pressable>
-      <Pressable onPress={toggleDatepicker}>
-        {showPicker && (
-          <DateTimePicker
-            testID="dateTimePicker"
-            value={input.horaInicio}
-            mode="time"
-            onChange={onChange}
-          />
-        )}
         <TextInput
-          placeholder="Hora inicio"
+          placeholder="Ciudad"
           style={styles.input2}
-          onChangeText={setTextDate}
-          value={textDate}
-          editable={false}
+          onChangeText={(text) =>
+            setInput((prevInput) => ({ ...prevInput, ciudad: text }))
+          }
+          value={input.ciudad}
         />
-      </Pressable>
-      <TextInput
-        placeholder="Cancha"
-        style={styles.input2}
-        onChangeText={(text) =>
-          setInput((prevInput) => ({ ...prevInput, ciudad: text }))
-        }
-        value={input.ciudad}
-      />
-      <TextInput
-        placeholder="Arbitro central"
-        style={styles.input2}
-        onChangeText={(text) =>
-          setInput((prevInput) => ({ ...prevInput, ciudad: text }))
-        }
-        value={input.ciudad}
-      />
-      <TextInput
-        placeholder="Arbitro asistente no. 1"
-        style={styles.input2}
-        onChangeText={(text) =>
-          setInput((prevInput) => ({ ...prevInput, ciudad: text }))
-        }
-        value={input.ciudad}
-      />
-      <TextInput
-        placeholder="Arbitro asistente no. 2"
-        style={styles.input2}
-        onChangeText={(text) =>
-          setInput((prevInput) => ({ ...prevInput, ciudad: text }))
-        }
-        value={input.ciudad}
-      />
-      <View style={{ margin: 20, paddingBottom: 30 }}>
-        <Button
-          title="Siguiente"
-          color="#ff5232"
-          onPress={() => {
-            setHeader(input);
-            navigation.navigate("Titulares");
-          }}
+        <Pressable onPress={toggleDatepicker}>
+          {showPicker && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={input.horaInicio}
+              mode="date"
+              onChange={onChange}
+            />
+          )}
+          <TextInput
+            placeholder="Fecha"
+            style={styles.input2}
+            onChangeText={setTextDate}
+            value={textDate}
+            editable={false}
+          />
+        </Pressable>
+        <Pressable onPress={toggleDatepicker}>
+          {showPicker && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={input.horaInicio}
+              mode="time"
+              onChange={onChange}
+            />
+          )}
+          <TextInput
+            placeholder="Hora inicio"
+            style={styles.input2}
+            onChangeText={setTextDate}
+            value={textDate}
+            editable={false}
+          />
+        </Pressable>
+        <TextInput
+          placeholder="Cancha"
+          style={styles.input2}
+          onChangeText={(text) =>
+            setInput((prevInput) => ({ ...prevInput, ciudad: text }))
+          }
+          value={input.ciudad}
         />
-      </View>
+        <TextInput
+          placeholder="Arbitro central"
+          style={styles.input2}
+          onChangeText={(text) =>
+            setInput((prevInput) => ({ ...prevInput, ciudad: text }))
+          }
+          value={input.ciudad}
+        />
+        <TextInput
+          placeholder="Arbitro asistente no. 1"
+          style={styles.input2}
+          onChangeText={(text) =>
+            setInput((prevInput) => ({ ...prevInput, ciudad: text }))
+          }
+          value={input.ciudad}
+        />
+        <TextInput
+          placeholder="Arbitro asistente no. 2"
+          style={styles.input2}
+          onChangeText={(text) =>
+            setInput((prevInput) => ({ ...prevInput, ciudad: text }))
+          }
+          value={input.ciudad}
+        />
+        <View style={{ margin: 20, paddingBottom: 30 }}>
+          <Button
+            title="Siguiente"
+            color="#ff5232"
+            onPress={() => {
+              setHeader(input);
+              navigation.navigate("Titulares");
+            }}
+          />
+        </View>
+      </PageLayout>
     </ScrollView>
   );
 };
@@ -194,8 +204,8 @@ const styles = StyleSheet.create({
   input2: {
     flex: 1,
     // height: 40,
-    borderWidth: 1,
-    borderRadius: 10,
+    borderBottomWidth: 1,
+    //  borderRadius: 10,
     paddingHorizontal: 10,
     paddingVertical: 10,
     backgroundColor: "#ffff",
